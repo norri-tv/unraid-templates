@@ -13,7 +13,7 @@
   <Discord>https://discord.gg/YFwxqB3tQh</Discord>
   <Category>MediaServer:Video MediaServer:Music</Category>
   <TemplateURL>https://raw.githubusercontent.com/norri-tv/unraid-templates/main/templates/norri.xml</TemplateURL>
-  <ReadMe>https://github.com/norri-tv/unraid-templates/blob/main/README.md</ReadMe>
+  <ReadMe>https://norri.tv/docs/getting-started/installation-unraid/</ReadMe>
   <Icon>https://norri.tv/apple-touch-icon.png</Icon>
   <WebUI>http://[IP]:[PORT:11423]/</WebUI>
   <Overview>Norri is a fast, privacy-focused media server for your movies, TV shows and music. Your library and playback history stay on your server, with no Norri cloud account or usage telemetry.[br][br]The server and web app are free, with all server features included. This Unraid template installs the server, database and transcoder together. Native apps for iPhone, iPad and Apple TV are currently available free through TestFlight.[br][br]Optional hardware transcoding: Intel (including Arc) and AMD use a /dev/dri Device mapping. NVIDIA uses the Nvidia Driver plugin, --runtime=nvidia, NVIDIA_VISIBLE_DEVICES and NVIDIA_DRIVER_CAPABILITIES. Open Read Me for the exact GPU setup steps and how to find your GPU ID.[br][br]Join our Discord for support, discussion and announcements. Installation guides and Apple app links are also available at norri.tv.[br][br]Unraid® is a registered trademark of Lime Technology, Inc. This application is not affiliated with, endorsed, or sponsored by Lime Technology, Inc.</Overview>

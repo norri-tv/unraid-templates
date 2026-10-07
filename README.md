@@ -18,7 +18,7 @@ When Norri appears in Community Apps, open **Apps**, search for **Norri**, and c
 ### Configure and start
 
 1. Select your existing Unraid folders for **Movies**, **TV shows** and **Music** as needed. Leave unused Host Paths blank. Leave both appdata paths and the port at their defaults unless you need to change them.
-2. Add GPU access below if wanted, then click **Apply**. Enable **Autostart** on the Docker page if Norri should start with Unraid.
+2. For hardware transcoding, follow [GPU access](#gpu-access) for your hardware before clicking **Apply**. Skip this step if you do not want GPU acceleration. Enable **Autostart** on the Docker page if Norri should start with Unraid.
 3. Open **WebUI**, create your administrator account, and add your libraries. The folder picker starts at `/media`, where your mappings appear as `movies`, `tv-shows`, `music`, and any other names you have added. Select the appropriate folder for each library.
 
 Keep the appdata share on your SSD/cache pool. The two appdata folders store your settings and database and must remain separate from each other and your media.
@@ -43,18 +43,41 @@ In Norri, select `/media/movies` for your movie library, `/media/tv-shows` for y
 
 ## GPU access
 
-### Intel or AMD
+Choose the instructions for the GPU you want Norri to use. The GPU must be available to Unraid's host driver, rather than reserved for a virtual machine. Hardware support depends on the GPU model and driver.
 
-If Unraid has `/dev/dri`, click **Add another Path, Port, Variable, Label or Device**, choose **Device**, and set **Value** to `/dev/dri`. Norri handles its access permissions.
+### Intel, including Arc, or AMD
+
+1. Confirm Unraid has a working driver for your GPU and `/dev/dri` is present. You can check by opening Unraid's **Terminal** and running `ls -l /dev/dri`. If the folder is missing, resolve the host GPU/driver setup before continuing. A separate NVIDIA plugin is not needed for Intel or AMD.
+2. In the Norri container editor, click **Add another Path, Port, Variable, Label or Device**. Choose **Device**, set **Name** to `GPU`, and set **Value** to `/dev/dri`. Click **Add**.
+
+This exposes the host's graphics devices to Norri; Norri handles their access permissions. No GPU UUID or NVIDIA environment variables are needed for this route.
 
 ### NVIDIA
 
-Install Unraid's **Nvidia-Driver** plugin and confirm it detects your GPU. Switch the container editor to **Advanced View**:
+1. In Unraid **Apps**, install **Nvidia Driver** if it is not already installed. Complete the plugin's first-install instructions, including its Docker restart or reboot step. Open the installed plugin's settings and confirm your GPU appears under **Installed GPU(s)**.
+2. Edit the Norri container and switch to **Advanced View**. Append `--runtime=nvidia` to **Extra Parameters**, with a space before it. Keep the existing parameters.
+3. Click **Add another Path, Port, Variable, Label or Device**, choose **Variable**, and add each row below. **Name** is the label displayed in Unraid; **Key** must match exactly.
 
-1. Append `--runtime=nvidia` to **Extra Parameters**, keeping the existing parameters.
-2. Add a **Variable** with **Key** `NVIDIA_VISIBLE_DEVICES` and **Value** your GPU UUID from the plugin, or `all`.
+| Name | Key | Value |
+| --- | --- | --- |
+| NVIDIA GPU | `NVIDIA_VISIBLE_DEVICES` | `all`, or the UUID of the GPU you want to use |
+| NVIDIA driver capabilities | `NVIDIA_DRIVER_CAPABILITIES` | `all` |
 
-Add only the GPU configuration your server supports. Leave it out if no compatible GPU is available.
+Use `all` for **NVIDIA_VISIBLE_DEVICES** to make all NVIDIA GPUs available; no ID lookup is needed. To select one GPU, copy its UUID from **Installed GPU(s)** in the Nvidia Driver plugin settings. Include the `GPU-` prefix and paste it without spaces. Alternatively, open Unraid's **Terminal** and run:
+
+```sh
+nvidia-smi --query-gpu=name,uuid --format=csv,noheader
+```
+
+Copy the UUID next to the GPU you want. Do not copy another user's GPU ID or an example ID. Setting both variables to `all` is valid; the runtime setting is still required for this setup.
+
+The plugin's [setup guide](https://forums.unraid.net/topic/98978-plugin-nvidia-driver/) covers driver installation and supported cards. [NVIDIA's container reference](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/docker-specialized.html) explains device selection and driver capabilities.
+
+### Apply and check
+
+Click **Apply**, then open Norri's **Settings → Transcoding**. Keep **Auto-detect**, or choose the detected GPU you want to use. Play a video that needs conversion and check **Settings → Active Sessions** for its video encoder. Direct playback does not need video encoding, so it will not demonstrate GPU transcoding.
+
+See [Hardware Transcoding](https://norri.tv/docs/advanced/hardware-transcoding/) for Norri's settings and playback checks. If you do not want GPU acceleration, omit the optional Device mapping, NVIDIA variables and `--runtime=nvidia` setting.
 
 ## Updates
 

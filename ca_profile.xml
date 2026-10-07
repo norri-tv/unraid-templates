@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommunityApplications>
+  <Profile>Official Unraid installation template for Norri, a self-hosted media server.</Profile>
+  <WebPage>https://norri.tv</WebPage>
+  <Discord>https://discord.gg/YFwxqB3tQh</Discord>
+  <Icon>https://norri.tv/apple-touch-icon.png</Icon>
+</CommunityApplications>

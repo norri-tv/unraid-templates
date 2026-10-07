@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
-  <Profile>Official Unraid installation template for Norri, a self-hosted media server.</Profile>
+  <Profile>Norri-maintained Docker installation template for Unraid. Norri is a self-hosted media server. Unraid® is a registered trademark of Lime Technology, Inc. This application is not affiliated with, endorsed, or sponsored by Lime Technology, Inc.</Profile>
   <WebPage>https://norri.tv</WebPage>
   <Discord>https://discord.gg/YFwxqB3tQh</Discord>
   <Icon>https://norri.tv/apple-touch-icon.png</Icon>

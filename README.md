@@ -2,6 +2,8 @@
 
 This Unraid Docker template installs the existing Norri Docker image. It includes the server, web interface, database and transcoder.
 
+Unraid® is a registered trademark of Lime Technology, Inc. This application is not affiliated with, endorsed, or sponsored by Lime Technology, Inc.
+
 ## Install
 
 ### Community Apps

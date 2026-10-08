@@ -8,6 +8,7 @@
   <Privileged>false</Privileged>
   <Beta>true</Beta>
   <Project>https://norri.tv</Project>
+  <Support>https://discord.gg/YFwxqB3tQh</Support>
   <Discord>https://discord.gg/YFwxqB3tQh</Discord>
   <Category>MediaServer:Video MediaServer:Music</Category>
   <TemplateURL>https://raw.githubusercontent.com/norri-tv/unraid-templates/main/templates/norri.xml</TemplateURL>

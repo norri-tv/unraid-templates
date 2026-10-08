@@ -2,14 +2,12 @@
 <Container version="2">
   <Name>Norri</Name>
   <Repository>registry.norri.tv/norri/norri:latest</Repository>
-  <Registry>https://registry.norri.tv</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Beta>true</Beta>
   <Project>https://norri.tv</Project>
-  <Support>https://discord.gg/YFwxqB3tQh</Support>
   <Discord>https://discord.gg/YFwxqB3tQh</Discord>
   <Category>MediaServer:Video MediaServer:Music</Category>
   <TemplateURL>https://raw.githubusercontent.com/norri-tv/unraid-templates/main/templates/norri.xml</TemplateURL>
@@ -22,8 +20,8 @@
   <Config Name="Movies" Target="/media/movies" Default="" Mode="ro" Description="Select your existing Unraid movies folder. It appears at /media/movies in Norri. Leave blank if unused; no deletion needed." Type="Path" Display="always" Required="false" Mask="false"/>
   <Config Name="TV shows" Target="/media/tv-shows" Default="" Mode="ro" Description="Select your existing Unraid TV folder. It appears at /media/tv-shows in Norri. Leave blank if unused; no deletion needed." Type="Path" Display="always" Required="false" Mask="false"/>
   <Config Name="Music" Target="/media/music" Default="" Mode="ro" Description="Select your existing Unraid music folder. It appears at /media/music in Norri. Leave blank if unused; no deletion needed." Type="Path" Display="always" Required="false" Mask="false"/>
-  <Config Name="Norri appdata" Target="/var/lib/norri" Default="/mnt/user/appdata/norri/data" Mode="rw" Description="Persistent Norri settings, artwork and cache. Keep this folder when updating or reinstalling." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/norri/data</Config>
-  <Config Name="Norri database" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/norri/database" Mode="rw" Description="Persistent database. Keep this folder when updating or reinstalling. It must be separate from Norri appdata and your media." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/norri/database</Config>
+  <Config Name="Norri appdata" Target="/var/lib/norri" Default="/mnt/user/appdata/norri/data" Mode="rw" Description="Persistent settings, artwork and cache. SSD/NVMe recommended: use an exclusive appdata share or a direct pool Host Path. Read Me explains both. Keep this folder when updating or reinstalling; move existing data before changing its path." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/norri/data</Config>
+  <Config Name="Norri database" Target="/var/lib/postgresql/data" Default="/mnt/user/appdata/norri/database" Mode="rw" Description="Persistent database. SSD/NVMe recommended: use an exclusive appdata share or a direct pool Host Path. Read Me explains both. Keep this folder when updating or reinstalling; move existing data before changing its path. Must be separate from Norri appdata and media." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/norri/database</Config>
   <Config Name="User ID" Target="PUID" Default="99" Mode="" Description="Unraid's standard nobody user. Change only if your media uses a different user ID." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
   <Config Name="Group ID" Target="PGID" Default="100" Mode="" Description="Unraid's standard users group. Change only if your media uses a different group ID." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
 </Container>

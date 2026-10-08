@@ -4,7 +4,7 @@ The official Norri Docker template for Unraid. Norri is a fast, privacy-focused 
 
 ## Installation and instructions
 
-Follow the [Unraid installation guide in Norri Docs](https://norri.tv/docs/getting-started/installation-unraid/) for installation, media folders, Intel/AMD/NVIDIA GPU setup, updates, and backups.
+Follow the [Unraid installation guide in Norri Docs](https://norri.tv/docs/getting-started/installation-unraid/) for installation, SSD/NVMe appdata storage using exclusive shares or direct pool paths, media folders, Intel/AMD/NVIDIA GPU setup, updates, and backups.
 
 This repository contains the template used by Community Apps. The user guide is maintained on the Norri website.
 

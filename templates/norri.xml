@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container version="2">
   <Name>Norri</Name>
-  <Repository>registry.norri.tv/norri/norri:latest</Repository>
+  <Repository>registry.norri.tv/norri:latest</Repository>
   <Registry>https://norri.tv/docs/getting-started/installation-unraid/</Registry>
   <Network>bridge</Network>
   <MyIP/>
